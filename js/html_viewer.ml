@@ -169,7 +169,7 @@ let attach ?(grab_focus=false) (c:Dom_html.canvasElement Js.t) v =
 
   let render () =
     if not (!render_queued) then (
-      Dom_html._requestAnimationFrame (Js.wrap_callback (fun _ev -> render_now ()));
+      ignore @@ Dom_html.window##requestAnimationFrame (Js.wrap_callback (fun _ev -> render_now ()));
       render_queued := true
     ) in
 
